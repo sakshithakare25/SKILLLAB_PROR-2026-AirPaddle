@@ -8,23 +8,7 @@
 > **Total Time Available:** 32 effort-hours per team  
 > **Project Type:** Playful, interactive, technology-based experience
 
----
 
-# Before you begin
-
-## Fork and rename this repository
-
-After forking this repository, rename it using the format:
-
-`SKILLLAB_PROR-2026-TeamName`
-
-### Example
-
-`SKILLLAB_PROR-2026-AuroWizards`
-
-Do not keep the default repository name.
-
----
 
 # How to use this README
 
@@ -57,37 +41,35 @@ By the final review, this README should clearly show:
 
 ## 1.1 Studio / Group Name
 
-`Project^2`
+`AirPaddle Group No 21`
 
 ## 1.2 Team Members
 
 | Name                  | Primary Role                    | Secondary Role   | Strengths Brought to the Project |
 | --------------        | ------------------------------- | --------------   | -------------------------------- |
-| `Mrugendra Vasmatkar` | `[Electronics / Coding / App ]` | `Documentation`  | `Documentation, Gift of Gab `|
-| `Jyoti Bagate`        | `[Electronics / Fabrication]`   | `[Coding]`       | `Material Handling, Hardware`    |
+| `Sakshi Thakare` | `[Electronics / Coding / App ]` | `[Coding]`  | `Hardware `|
+| `Viraj Pradhan`        | `[Electronics / Fabrication]`   | `[Coding]`       | `Hardware`    |
+| `Umair Shaikh` | `[Electronics / Coding / App ]` | `Documentation`  | `Documentation, Gift of Gab `|
+| `Bhushan Sonawane`        | `[Electronics / Fabrication]`   | `Documentation`       | `Documentation, Gift of Gab`    |
 
 ## 1.3 Project Title
 
-`"Project Project"`
+`"Project Ping-Pong Game"`
 
-`(because Project-or)`
 
 <img width="1600" height="1131" alt="image" src="https://github.com/user-attachments/assets/c64bfbd4-b3b7-43d9-83ad-c203a5aa11bc" />
 
 ## 1.4 One-Line Pitch
 
-`A projected, fully customizable time portal where engineering education is done through PUBG battlefield in the comfort of our home`
+`A multiplayer ping pong game where players control paddles using hand gestures through MPU6050 motion sensors connected to Raspberry Pi.`
 
 ## 1.5 Expanded Project Idea
 
-In 1–2 paragraphs, explain:
+`Our project is a gesture-controlled Ping Pong game built using Raspberry Pi, MPU6050 motion sensors, ESP32, and a display interface. Instead of using a keyboard or joystick, players use hand movements to control the paddles in the game.`
 
-- what your project is,
-- what kind of experience it creates,
-- what technologies are involved.
+`Each player wears or holds an MPU6050 sensor, which detects motion such as upward and downward tilt. These motion values are sent through ESP32 to the Raspberry Pi, where the main game logic runs using Python and Pygame. The Raspberry Pi processes the gestures and moves the paddles accordingly on the display screen.`
 
-**Response:**  
-`A projected and fully customizable time portal can transform engineering education into an immersive PUBG-style battlefield experience from the comfort of home. In this environment, students can learn engineering concepts by entering a virtual battlefield where challenges, obstacles, and missions are designed around real technical problems. Instead of passively studying theory, learners actively apply concepts such as electronics, coding, sensors, robotics, mechanics, and system design to complete missions, solve problems, and progress through different levels. This approach makes engineering education more interactive, engaging, and practical by combining gaming, simulation, and hands-on problem-solving in a familiar and exciting format.`
+`Since OLED and external buttons were unavailable, the complete interface including game start, restart, and controls is handled directly on the Raspberry Pi display interface. This creates a simple but highly interactive gaming experience using embedded systems and sensor-based control.`
 
 ---
 
