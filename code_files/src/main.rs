@@ -3,15 +3,14 @@ use rand::Rng;
 use linux_embedded_hal::I2cdev;
 use mpu6050::*;
 
-// ============================================================
-// GAME SETTINGS (Same as your original)
-// ============================================================
+// GAME SETTINGS 
+
 const FPS: u32 = 60;
 const POWERUP_DURATION: i32 = 360;
 
-// ============================================================
+
 // MPU6050 SETTINGS
-// ============================================================
+
 
 // MPU 1 -> Left Paddle -> Address 0x68
 // MPU 2 -> Right Paddle -> Address 0x69
@@ -39,9 +38,8 @@ fn get_sensor_position(mpu: &mut Mpu6050<I2cdev>, screen_h: f32) -> f32 {
     }
 }
 
-// ============================================================
-// ENUMS & STRUCTS (UNCHANGED)
-// ============================================================
+
+// ENUMS & STRUCTS 
 
 #[derive(Clone, Copy, PartialEq)]
 enum PowerUpType {
@@ -73,9 +71,9 @@ struct PowerUp {
     kind: PowerUpType,
 }
 
-// ============================================================
-// LOGIC IMPLEMENTATIONS (UNCHANGED)
-// ============================================================
+
+// LOGIC IMPLEMENTATIONS
+
 
 impl Paddle {
     fn new(x: f32, y: f32, w: f32, h: f32) -> Self {
@@ -136,9 +134,8 @@ impl Ball {
     }
 }
 
-// ============================================================
 // COLLISION
-// ============================================================
+
 
 fn check_col(cx: f32, cy: f32, r: f32, rect: Rectangle) -> bool {
     let tx = cx.clamp(rect.x, rect.x + rect.width);
@@ -147,9 +144,7 @@ fn check_col(cx: f32, cy: f32, r: f32, rect: Rectangle) -> bool {
     ((cx - tx).powi(2) + (cy - ty).powi(2)) <= r.powi(2)
 }
 
-// ============================================================
-// GAME LOOP (ONLY PADDLE CONTROL CHANGED)
-// ============================================================
+// GAME LOOP 
 
 fn game_loop(
     rl: &mut RaylibHandle,
@@ -189,9 +184,8 @@ fn game_loop(
             break;
         }
 
-        // ====================================================
+        
         // MPU6050 CONTROL HERE
-        // ====================================================
 
         left.rect.y = get_sensor_position(&mut mpu1, sh);
         right.rect.y = get_sensor_position(&mut mpu2, sh);
@@ -200,9 +194,9 @@ fn game_loop(
         left.rect.y = left.rect.y.clamp(top_b, bot_b - left.rect.height);
         right.rect.y = right.rect.y.clamp(top_b, bot_b - right.rect.height);
 
-        // ====================================================
+        
         // BALL PHYSICS
-        // ====================================================
+    
 
         ball.trail.push(Vector2::new(ball.x, ball.y));
         if ball.trail.len() > 8 {
@@ -230,9 +224,9 @@ fn game_loop(
             ball.reset(sw, sh);
         }
 
-        // ====================================================
+        
         // DRAWING
-        // ====================================================
+        
 
         let mut d = rl.begin_drawing(thread);
         d.clear_background(Color::BLACK);
@@ -276,14 +270,12 @@ fn game_loop(
     }
 }
 
-// ============================================================
 // MAIN
-// ============================================================
 
 fn main() {
-    // ==========================
+    
     // MPU6050 INIT
-    // ==========================
+    
 
     let dev1 = I2cdev::new("/dev/i2c-1").unwrap();
     let dev2 = I2cdev::new("/dev/i2c-1").unwrap();
@@ -300,9 +292,9 @@ fn main() {
 
     println!("MPU6050 sensors initialized successfully!");
 
-    // ==========================
+
     // RAYLIB INIT
-    // ==========================
+    
 
     let (mut rl, thread) = raylib::init()
         .size(0, 0)
