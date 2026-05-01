@@ -2,40 +2,6 @@
 
 ## Final Project README
 
-> **Project Weight:** 100%  
-> **Team Size:** 4/3 students  
-> **Project Duration:** 16 hours  
-> **Total Time Available:** 32 effort-hours per team  
-> **Project Type:** Playful, interactive, technology-based experience
-
-
-
-# How to use this README
-
-This file is your team’s **working project document**.
-
-You must keep updating it throughout the build period.  
-By the final review, this README should clearly show:
-
-- your idea,
-- your planning,
-- your design decisions,
-- your technical process,
-- your build progress,
-- your testing,
-- your failures and changes,
-- your final outcome.
-
-## Rules
-
-- Fill every section.
-- Do not delete headings.
-- If something does not apply, write `Not applicable` and explain why.
-- Add images, screenshots, sketches, links, and videos wherever useful.
-- Update task status and weekly logs regularly.
-- Use this file as evidence of process, not only as a final report.
-
----
 
 # 1. Team Identity
 
@@ -87,10 +53,7 @@ List what inspired the project.
 
 ## 2.2 Original Twist
 
-What makes your project original?
-
-**Response:**  
-
+`Unlike traditional keyboard or joystick-based ping pong games, our project uses dual MPU6050 motion sensors connected directly to a Raspberry Pi to create a real-time gesture-controlled multiplayer gaming experience. Each player physically tilts or moves a handheld controller containing the MPU6050 sensor, and the Raspberry Pi processes these motion values instantly to move the paddles on-screen. The project combines embedded electronics, sensor fusion, Python game development, and real-time motion tracking into an interactive physical gaming system.`
 
 ---
 
@@ -98,10 +61,11 @@ What makes your project original?
 
 ## 3.1 User Journey 
 
-Describe exactly how a user will use the project.Make it a story
-**Response:**  
+`The user starts the Raspberry Pi system and launches the AirPaddle game on the display screen. Each player holds an MPU6050 motion sensor in their hand. Once the game begins, players tilt their hands upward or downward to control their paddles on the screen.`
 
-                                                  |
+`The Raspberry Pi continuously reads motion data from both MPU6050 sensors through the I2C interface and processes the tilt values in Python using Pygame. As players move their hands, the paddles respond in real time, creating a gesture-based multiplayer ping pong experience.`
+
+`Players compete by trying to block and return the moving ball. Fast hand movements create quicker paddle responses, making the gameplay highly interactive and engaging. The game can be restarted directly from the Raspberry Pi interface after a match ends.`
 
 
 
@@ -110,20 +74,23 @@ Describe exactly how a user will use the project.Make it a story
 # 4. Definition of Success
 
 ## 4.1 Definition of “Usable”
-
-
+`The project is considered usable when both MPU6050 sensors successfully control the paddles in real time with smooth motion tracking, the ball physics work correctly, and two players can play the game continuously without major lag, crashes, or sensor disconnects.`
 
 ## 4.2 Minimum Usable Version
 
-What is the smallest version of this project that still delivers the core experience?
-
-**Response:**  
+`The minimum usable version includes two MPU6050 sensors connected to Raspberry Pi through I2C, a basic Pygame interface displaying paddles and a moving ball, and gesture-based paddle movement using tilt readings from both sensors.`
 
 
 ## 4.3 Stretch Features
 
-What features are nice to have but not essential?
-
+- `Smash detection using sudden acceleration spikes`
+- `Scoreboard system`
+- `Sound effects and background music`
+- `AI single player mode`
+- `Real-time motion visualization graphs`
+- `Wireless sensor communication using ESP32`
+- `Gesture calibration menu`
+- `Full-screen arcade mode`
 
 ---
 
@@ -135,17 +102,17 @@ Check all that apply.
 
 - [x] Electronics-based
 
-- [ ] Mechanical
+- [x] Mechanical
 
 - [x] Sensor-based
 
 - [x] App-connected
 
-- [x] Motorized
+- [ ] Motorized
 
-- [ ] Sound-based
+- [x] Sound-based
 
-- [x] Light-based
+- [ ] Light-based
 
 - [x] Screen/UI-based
 
@@ -159,22 +126,23 @@ Check all that apply.
 
 ## 5.2 High-Level System Description
 
-Explain how the system works in simple terms.
+The system uses two MPU6050 motion sensors as input devices. Each sensor measures acceleration and tilt using its built-in accelerometer and gyroscope. The sensors communicate with the Raspberry Pi using the I2C protocol with addresses 0x68 and 0x69.
 
-Include:
+The Raspberry Pi acts as the main processing unit and runs the game logic using Python and Pygame. Motion data from the sensors is continuously read, filtered, and converted into paddle movement inside the game. The processed output is displayed on a monitor connected to the Raspberry Pi.
 
-- input,
-- processing,
-- output,
-- physical structure,
-- app interaction if any.
-
-**Response:**  
+The complete game interface, player interaction, physics calculations, and rendering are handled directly on the Raspberry Pi system.
 
 ## 5.3 Input / Output Map
 
-| System Part                              | Type            | What It Does                                                               |
 
+| System Part       | Type          | What It Does                          |
+| ----------------- | ------------- | ------------------------------------- |
+| MPU6050 Sensor 1  | Input         | Detects hand tilt for Player 1 paddle |
+| MPU6050 Sensor 2  | Input         | Detects hand tilt for Player 2 paddle |
+| Raspberry Pi      | Processing    | Reads sensor data and runs game logic |
+| Python + Pygame   | Software      | Generates game graphics and physics   |
+| Display Screen    | Output        | Shows live ping pong gameplay         |
+| I2C Communication | Communication | Transfers motion data from sensors    |
 
 ---
 
@@ -224,26 +192,23 @@ Add a sketch with labels showing:
 
 ## 7.1 Electronics Used
 
-| Component                 | Quantity | Purpose                               |
-| ------------------------- | --------:| ------------------------------------- |
-| `[Raspi/FPGA]`                 | `1`      | `[Main controller]`                   |
-| `[L298N Motor Driver]`    | `1`      | `[Control Motors]`                    |
-| `[BO Motors]`             | `2`      | `[Rotate wheels]`                     |
-| `[Buck Converter]`        | `1`      | `[Power ESP32]`                       |
-| `[Li Ion Battery Pack]`   | `2`      | `[Power]`                             |
-| `[Projector]`             | `1`      | `[Display obstacles]`                 |
-| `Camera (Webcam / Phone)` | `1`      | `[Tracks car position using markers]` |
+| Component               |  Quantity | Purpose                             |
+| ----------------------- | --------: | ----------------------------------- |
+| `Raspberry Pi 4`        |       `1` | `Main game processing unit`         |
+| `MPU6050 Motion Sensor` |       `2` | `Detect player hand gestures`       |
+| `HDMI Display`          |       `1` | `Display game interface`            |
+| `Jumper Wires`          | `Several` | `I2C and power connections`         |
+| `Breadboard`            |       `1` | `Temporary prototyping connections` |
+| `Power Adapter`         |       `1` | `Power Raspberry Pi`                |
+
 
 ## 7.2 Wiring Plan
 
-Describe the main electrical connections.
+Both MPU6050 sensors are connected to the Raspberry Pi using the I2C communication protocol. The SDA pins of both sensors are connected to GPIO2 (Pin 3), and the SCL pins are connected to GPIO3 (Pin 5). Both sensors share common 3.3V power and GND connections.
 
-**sample Response:**  
-`The RASPI is connected to the motor driver (L298N) using four GPIO pins (18,19; 22,23) to control motor direction (IN1, IN2, IN3, IN4). Two PWM-capable pins (ENA and ENB; 25 and 26) are connected to control the speed of each motor.
+To avoid I2C address conflicts, the AD0 pin of the first MPU6050 is connected to GND, giving it address 0x68, while the AD0 pin of the second MPU6050 is connected to 3.3V, changing its address to 0x69.
 
-The motors are connected to the output terminals of the motor driver. The motor driver is powered directly by the battery pack (higher voltage), while the ESP32 receives regulated 5V from the buck converter.
-
-All components share a common ground to ensure stable operation. The projector and camera are connected to the laptop, which handles tracking and game logic separately.`
+The Raspberry Pi continuously reads motion data from both sensors and maps the tilt values to paddle movement in the game.
 
 ## 7.3 Circuit Diagram/architecture diagram
 
