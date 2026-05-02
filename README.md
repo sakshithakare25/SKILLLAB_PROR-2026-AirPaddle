@@ -45,7 +45,7 @@
 
 | Source Type | Title / Link | What Inspired You |
 | --- | --- | --- |
-| `Video` | `https://www.instagram.com/reel/DW4CT7WCDry/?igsh=cXg3dzAxYmdncDBo` | `How projection mapping can be used to create interactive digital + physical experiences` |
+| `Article` | `https://phychic-owl.medium.com/rust-project-ping-pong-game-665766cc45ed` | `This project demonstrates how to develop a classic Ping Pong game using the Rust programming language and the piston_window game engine. It features a modular structure to manage game mechanics such as ball physics, player and AI paddle movement, and boundary collision detection.` |
 
 ## 2.2 Original Twist
 
