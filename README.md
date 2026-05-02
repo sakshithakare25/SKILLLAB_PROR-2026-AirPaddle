@@ -23,8 +23,6 @@
 
 `"Project AirPaddle — Gesture-Controlled Ping Pong"`
 
-<img width="1600" height="1131" alt="image" src="https://github.com/user-attachments/assets/c64bfbd4-b3b7-43d9-83ad-c203a5aa11bc" />
-
 ## 1.4 One-Line Pitch
 
 `A multiplayer ping pong game where players control paddles using hand gestures through MPU6050 motion sensors connected to Raspberry Pi.`
@@ -517,11 +515,11 @@ Jumper wires were routed inside the enclosure along channels designed into the C
 
 **Hardware Setup:**
 
-<img width="960" height="1280" alt="WhatsApp Image 2026-04-24 at 9 46 02 AM (1)" src="" />
+<img width="960" height="1280" alt="hardware setup" src="images/hardware.jpeg" />
 
 **Gameplay Screenshot (Score: 4 – 2, ball trail visible, both paddles active):**
 
-> *(Upload your gameplay screenshot to GitHub and replace this line with the image tag)*
+> 
 
 ---
 
